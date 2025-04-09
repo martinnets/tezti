@@ -1,0 +1,9 @@
+/* Hide all tab content by default */
+div[data-state="inactive"] {
+  display: none;
+}
+
+/* Show only the active tab content */
+div[data-state="active"] {
+  display: block;
+}
