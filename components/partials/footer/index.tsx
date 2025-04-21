@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useSidebar, useThemeStore } from "@/store";
 import FooterLayout from "./footer-layout";
 import MobileFooter from "./mobile-footer";
+const appVersion = process.env.APP_VERSIOn;
 
 const Footer = ({ handleOpenSearch }: { handleOpenSearch: () => void }) => {
   const { collapsed, sidebarType } = useSidebar();
@@ -78,7 +79,7 @@ const FooterContent = () => {
   return (
     <div className="block md:flex md:justify-between text-muted-foreground">
       <p className="sm:mb-0 text-xs md:text-sm">
-        COPYRIGHT © {new Date().getFullYear()} Tezti
+        COPYRIGHT © {new Date().getFullYear()} Tezti -  v.1.0.0
       </p>
     </div>
   );

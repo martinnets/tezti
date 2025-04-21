@@ -1,9 +1,9 @@
 import axios from "axios";
 
-//const baseURL = process.env.NEXT_PUBLIC_SITE_URL + "/api";
-//export const baseURLService = process.env.NEXT_API_SERVICE_URL + "/api";
-const baseURL =" http://localhost:3000/api"; 
-export const baseURLService =  " http://localhost:8000/api";
+const baseURL = process.env.NEXT_PUBLIC_SITE_URL + "/api";
+export const baseURLService = process.env.NEXT_API_SERVICE_URL + "/api";
+// const baseURL =" http://localhost:3000/api"; 
+// export const baseURLService =  " http://localhost:8000/api";
 
 
 export const api = axios.create({

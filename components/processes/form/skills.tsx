@@ -2,9 +2,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { RadioGroup,RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
+
 import {
   Tooltip,
   TooltipContent,
@@ -20,6 +23,32 @@ import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import * as R from "remeda";
 
+const items = [
+  {
+    id: "recents",
+    label: "Recents",
+  },
+  {
+    id: "home",
+    label: "Home",
+  },
+  {
+    id: "applications",
+    label: "Applications",
+  },
+  {
+    id: "desktop",
+    label: "Desktop",
+  },
+  {
+    id: "downloads",
+    label: "Downloads",
+  },
+  {
+    id: "documents",
+    label: "Documents",
+  },
+] as const
 type Props = {
   skills: Skill[];
   processToEdit?: Process;
@@ -72,7 +101,7 @@ const SkillsForm = ({ skills, processToEdit }: Props) => {
   }, [skillsValues]);
 
   const onProcessToEditChanged = () => {
-    if (processToEdit?.id) {
+    if (processToEdit?.id) { 
       api.get(`/processes/${processToEdit.id}/skills/get`).then((response) => {
         const skills = response.data.data as [
           { id: number; percentage: number }
@@ -134,6 +163,16 @@ const SkillsForm = ({ skills, processToEdit }: Props) => {
               <div> {processToEdit?.id} </div>
             </div>
           </div>
+        </div>
+        <div className="rounded-md bg-card text-card-foreground shadow-sm bg-info">
+          <div className="space-y-1.5 px-4 py-4 border-b border-border flex flex-row items-center">
+            <h3 className="text-xl font-medium flex-1 leading-normal text-white"> Asignar Evaluaciones</h3>
+          </div>
+        </div>
+        <div role="alert" className="relative w-full rounded-lg p-4 flex md:items-center items-start 
+        space-x-4 rtl:space-x-reverse bg-secondary text-secondary-foreground mb-6 ">
+          <h2 className=" grow ">Habilidades Socioemocionales
+            </h2>
         </div>
         <div className="mb-4">
           {skills.map((skill) => (
@@ -246,6 +285,73 @@ const SkillsForm = ({ skills, processToEdit }: Props) => {
           (!) Para detectar mejor las brechas, asigna pesos (%) diferenciados a
           las habilidades elegidas.
         </div>
+        <div className="rounded-md bg-card text-card-foreground shadow-sm bg-info">
+          <div className="space-y-1.5 px-4 py-4 mt-6 border-b border-border flex flex-row items-center">
+            <h3 className="text-xl font-medium flex-1 leading-normal text-white"> Hábilidades Cognitivas</h3>
+          </div>
+        </div>
+        {/* <div className="custom-control custom-radio">
+              <input type="radio" id="customRadio1" name="customRadio" className="custom-control-input"></input>
+              <label className="custom-control-label"  >Radio</label>
+            </div>
+            <div className="custom-control custom-control-lg custom-radio">
+              <input type="radio" id="customRadio2" name="customRadio" className="custom-control-input"> </input>
+              <label className="custom-control-label"  >Radio</label>
+            </div> */}
+        <div className="grid grid-cols-12 gap-4">
+          <div className="mb-4 p-5">
+            
+
+          <RadioGroup defaultValue="option-one">
+              <div className="flex items-center space-x-2 w-full">
+                
+              <RadioGroupItem value="option-one" id="option-one" />
+
+                <Label htmlFor="option-one" 
+                className="peer-disabled:cursor-not-allowed peer-disabled:opacity-50 inline-block ml-2 text-base text-muted-foreground font-normal">
+                  PAC</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="option-two" id="option-two" />
+                <Label htmlFor="option-two" 
+                className="peer-disabled:cursor-not-allowed peer-disabled:opacity-50 inline-block ml-2 text-base text-muted-foreground font-normal">
+                  Mini PAC</Label>
+              </div>
+            </RadioGroup>
+
+          </div>
+         
+        </div>
+        <div role="alert" className="relative w-full rounded-lg p-4 flex md:items-center items-start 
+            space-x-4 rtl:space-x-reverse bg-secondary text-secondary-foreground mb-6 ">
+            <h2 className=" grow ">Evaluaciones
+              </h2>
+          </div>
+          <div className="flex  md:items-center items-start w-full pl-5">
+            <Checkbox id="chkpersonalidad"   />
+            <Label
+              htmlFor="chkpersonalidad"
+              className="peer-disabled:cursor-not-allowed peer-disabled:opacity-50 inline-block ml-2 text-base text-muted-foreground font-normal pl-3">
+              Eva. Personalidad
+            </Label>
+          </div>
+          <div className="flex  md:items-center items-start w-full pl-5">
+            <Checkbox id="chkintegridad"   />
+            <Label
+              htmlFor="chkintegridad"
+              className="peer-disabled:cursor-not-allowed peer-disabled:opacity-50 inline-block ml-2 text-base text-muted-foreground font-normal pl-3">
+              Eva. Integridad
+            </Label>
+          </div>
+          <div className="flex  md:items-center items-start w-full pl-5">
+            <Checkbox id="chkengagement"   />
+            <Label
+              htmlFor="chkengagement"
+              className="peer-disabled:cursor-not-allowed peer-disabled:opacity-50 inline-block ml-2 
+              text-base text-muted-foreground font-normal pl-3">
+              Eva. Engagement
+            </Label>
+          </div>
       </CardContent>
       <CardFooter>
         <Button

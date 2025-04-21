@@ -17,7 +17,7 @@ import toast from "react-hot-toast";
 import { z } from "zod";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
-
+import FooterLayout from "../partials/footer/footer-layout";
 const schema = z.object({
   email: z.string().email({ message: "El formato de correo no es válido" }),
   password: z
@@ -177,7 +177,12 @@ const LogInForm = () => {
           {isPending ? "Procesando..." : "Iniciar sesión"}
         </Button>
       </form>
+      <div className="mt-5 2xl:mt-8 text-center text-base text-default-600">
+        
+      <a className="text-xs" >  Tezti - v1.0.0
+       </a></div>
     </div>
+  
   );
 };
 
