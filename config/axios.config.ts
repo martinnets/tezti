@@ -10,21 +10,21 @@ export const api = axios.create({
   baseURL,
 });
 
-// api.interceptors.response.use(
-//   function (response) {
-//     // Do something with the response data
-//     return response;
-//   },
-//   function (error) {
-//     // Handle the response error
-//     if (error.response && error.response.status === 401) {
-//       // redirect("/auth/login");
-//       window.location.replace("/auth/login");
-//       // Perform any logout actions or redirect to login page
-//     }
-//     return Promise.reject(error);
-//   }
-// );
+api.interceptors.response.use(
+  function (response) {
+    // Do something with the response data
+    return response;
+  },
+  function (error) {
+    // Handle the response error
+    if (error.response && error.response.status === 401) {
+      // redirect("/auth/login");
+      window.location.replace("/auth/login");
+      // Perform any logout actions or redirect to login page
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const apiServices = axios.create({
   baseURL: baseURLService,

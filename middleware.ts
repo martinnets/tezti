@@ -39,6 +39,7 @@ export async function middleware(request: any) {
 }
 
 export const config = {
+  //matcher: ["/processes/:path*"],
   matcher: [
     // Skip all internal paths (_next, assets, api)
     //"/((?!api|assets|.*\\..*|_next).*)",

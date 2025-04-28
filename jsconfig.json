@@ -47,6 +47,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "app/providers/layout.jsx"  ],
   "exclude": ["node_modules"]
 }

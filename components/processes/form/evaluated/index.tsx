@@ -17,7 +17,7 @@ import toast from "react-hot-toast";
 import AddEvaluatedModal from "./add-evaluated-modal";
 import { getColumns } from "./columns";
 import { DataTableToolbar } from "./data-table-toolbar";
-
+ 
 type QueryKey = { queryKey: [string, any] };
 
 type Props = {
@@ -36,6 +36,7 @@ type Filters = {
 };
 
 const EvaluatedForm = ({ evaluatedList, processToEdit }: Props) => {
+  const [evaluados, setEvaluados] = useState([]);
   const [viewMode, setViewMode] = useState("normal");
 
   const [isSendingReminders, setIsSendingReminders] = useState<boolean>(false);
@@ -69,8 +70,9 @@ const EvaluatedForm = ({ evaluatedList, processToEdit }: Props) => {
         { params: filters }
       );
       const data = response.data.data;
+      setEvaluados(response.data.data)
       return {
-        rows: data.data as Evaluated[],
+        rows: data as Evaluated[],
         totalPages: Math.ceil(data.total / filters.per_page),
         currentPage: data.current_page,
       };
@@ -261,6 +263,7 @@ const EvaluatedForm = ({ evaluatedList, processToEdit }: Props) => {
       ) : (
         <Fragment>
           <CardContent className="pb-8">
+            
             <DataTable
               ref={tableRef}
               totalPages={data?.totalPages || 0}

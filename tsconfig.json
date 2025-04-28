@@ -48,6 +48,6 @@
     "app/[lang]/(dashboard)/(chart)/(re-chart)/charts-rechart-pie/two-simple-pie.jsx",
     "app/[lang]/(dashboard)/(chart)/(re-chart)/charts-rechart-radialbar/basic-radial-bar.jsx",
     "app/[lang]/(dashboard)/(chart)/(re-chart)/charts-rechart-bar/barchart-with-multixaxis.tsx"
-  ],
+, "app/providers/layout.jsx"  ],
   "exclude": ["node_modules"]
 }

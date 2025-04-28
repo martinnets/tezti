@@ -57,9 +57,10 @@ export const getColumns = ({
         title="Evaluado"
       />
     ),
-    cell: ({ row }) => (
-      <div>
-        {row.original.user?.name} {row.original.user?.lastname}
+    cell: ({ row,cell }) => (
+      <div>   
+         
+        {row.getValue('name')} {row.getValue('lastname')}
       </div>
     ),
     enableSorting: false,
@@ -74,7 +75,7 @@ export const getColumns = ({
       />
     ),
     cell: ({ row }) => (
-      <div className="truncate">{row.original.user.email}</div>
+      <div className="truncate">{row.getValue('email')}</div>
     ),
     enableSorting: false,
     enableHiding: false,
@@ -87,7 +88,7 @@ export const getColumns = ({
         title="Resultado"
       />
     ),
-    cell: ({ row }) => <div className="truncate">{row.original.result}</div>,
+    cell: ({ row }) => <div className="truncate">{row.getValue('result')}</div>,
     enableSorting: false,
     enableHiding: false,
   },
