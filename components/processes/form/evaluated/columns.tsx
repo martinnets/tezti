@@ -60,7 +60,7 @@ export const getColumns = ({
     cell: ({ row,cell }) => (
       <div>   
          
-        {row.getValue('name')} {row.getValue('lastname')}
+        {row.getValue('name')} 
       </div>
     ),
     enableSorting: false,

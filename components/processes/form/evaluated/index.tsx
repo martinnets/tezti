@@ -105,9 +105,20 @@ const EvaluatedForm = ({ evaluatedList, processToEdit }: Props) => {
     if (evalutedIdsToSendReminder?.length) {
       try {
         setIsSendingReminders(true);
-        await api.post(`/processes/${processToEdit?.id}/users/send-reminders`, {
-          position_user_id: evalutedIdsToSendReminder,
-        });
+        console.log(evalutedIdsToSendReminder)
+        const datainvitacion=
+          {
+            "position_id":processToEdit?.id,
+            "position_user_id":evalutedIdsToSendReminder
+          }
+        
+        console.log(datainvitacion)
+        //await api.post(`/processes/${processToEdit?.id}/users/send-reminders`, {
+        await api.post(`/evaluacion/sendinvitation`,  datainvitacion)
+        .then((result) => {
+          console.log(result)
+          toast.success("Los recordatorios han sido enviados exitosamente");
+        })
         setIsSendingReminders(false);
         toast.success("Los recordatorios han sido enviados exitosamente");
       } catch (error) {
