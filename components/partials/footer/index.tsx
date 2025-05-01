@@ -79,7 +79,7 @@ const FooterContent = () => {
   return (
     <div className="block md:flex md:justify-between text-muted-foreground">
       <p className="sm:mb-0 text-xs md:text-sm">
-        COPYRIGHT © {new Date().getFullYear()} Tezti -  v.1.0.0
+        COPYRIGHT © {new Date().getFullYear()} Tezti -  v.1.0.2
       </p>
     </div>
   );
